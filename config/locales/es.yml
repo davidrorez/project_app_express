@@ -1,2 +1,26 @@
 es:
-  hello: "Hola"
+  application:
+    list_of: Lista de %{model}
+    new_model: Nuevo %{model}
+    show: Mostrar
+    edit: Editar
+    save: Guardar
+    back: Atras
+    delete: Eliminar
+    create: Crear
+    cruds_available: tema disponible
+    error: Error
+    created: Creado Exitosamente
+    edited: Actualizado Exitosamente
+    destroyed: Borrado Exitosamente
+    select: Seleccione
+  activerecord:
+    attributes:
+      test:
+        name: Nombre
+        year: Año
+    modules:
+    errors:
+      models:
+
+

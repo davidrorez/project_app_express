@@ -1,0 +1,67 @@
+%html
+  %head
+    %title Administrador   
+    %meta{:charset => "utf-8"}
+    %meta{"http-equiv" => "X-UA-Compatible", :content => "IE=edge"}
+    %meta{"name" => "viewport", :content => "width=device-width, initial-scale=1"}
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %style
+      :plain
+        @media (min-width: 992px) {
+          .sidebar {
+            height: 100vh;
+          }
+        } 
+  %body
+    %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+      .container-fluid
+        %a.navbar-brand{:href => "/"} Administrador
+        %button.navbar-toggler{"type" => "button", "data-bs-toggle" => "collapse", "data-bs-target" => "#navbarNav", "aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation"}
+          %span.navbar-toggler-icon
+        #navbarNav.collapse.navbar-collapse
+          %ul.navbar-nav.ms-auto
+            %li.nav-item
+              %a.nav-link{:href => "/"} Inicio
+            %li.nav-item
+              %a.nav-link{:href => "#"} Usuarios
+            %li.nav-item
+              %a.nav-link{:href => "#"} Salir
+    .container-fluid
+      .row
+        %nav.col-12.col-md-3.col-lg-2.d-md-block.bg-dark.sidebar
+          %div.sidebar-sticky
+            %ul.nav.flex-column
+              %li.nav-item
+                %a.nav-link{:href => "#"} Platos
+              %li.nav-item
+                %a.nav-link{:href => "/tests"} Usuarios
+              %li.nav-item
+                %a.nav-link{:href => "#"} Clientes
+              %li.nav-item
+                %a.nav-link{:href => "#"} Pedidos
+              %li.nav-item
+                %a.nav-link{:href => "/tests"} Prueba
+        .col-12.col-md-9.ms-sm-auto.col-lg-10.ml-0
+          %h1.mt-2 Usuarios
+          %table.table.table-striped
+            %thread
+              %tr
+                %th= t('activerecord.attributes.test.name')
+                %th= t('activerecord.attributes.test.year')
+                %th= t('activerecord.attributes.test.name')
+                %th= t('activerecord.attributes.test.year')
+                %th= t('activerecord.attributes.test.name')
+                %th
+            %tbody
+              -@tests.each do |test|
+                %tr
+                  %td= test.name
+                  %td= test.year
+                  %td= test.name
+                  %td= test.year
+                  %td= test.name
+                  %td
+
+
+
