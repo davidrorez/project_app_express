@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: project_development
+  #port: 5433
+test:
+  <<: *default
+  database: project_test
+  #port: 5433
+
+production:
+  <<: *default
+  database: db/production.sqlite3
