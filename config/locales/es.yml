@@ -7,13 +7,14 @@ es:
     save: Guardar
     back: Atras
     delete: Eliminar
-    create: Crear
+    create: Crear usuario
     cruds_available: tema disponible
     error: Error
     created: Creado Exitosamente
     edited: Actualizado Exitosamente
     destroyed: Borrado Exitosamente
     select: Seleccione
+    actions: Opciones
   activerecord:
     attributes:
       test:
