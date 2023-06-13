@@ -280,7 +280,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
-  bootstrap
+  bootstrap (~> 5.2.3)
   capybara
   debug
   font-awesome-sass (~> 6.4.0)
