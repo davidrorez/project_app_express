@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> feature/SHJ-C13656
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
@@ -14,6 +18,7 @@
       :plain
         @media (min-width: 992px) {
           .sidebar {
+<<<<<<< HEAD
             position: fixed;
             height: 100vh;
           }
@@ -35,3 +40,25 @@
                 = button_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "btn btn-link"
 
             = yield
+=======
+            height: 100vh;
+          }
+        } 
+  %body
+    %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+      .container-fluid
+        %a.navbar-brand{:href => "/"} Administrador
+        %button.navbar-toggler{"type" => "button", "data-bs-toggle" => "collapse", "data-bs-target" => "#navbarNav", "aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation"}
+          %span.navbar-toggler-icon
+        #navbarNav.collapse.navbar-collapse
+          %ul.navbar-nav.ms-auto
+            %li.nav-item
+              %a.nav-link{:href => "/users/login"} Iniciar sesion
+            %li.nav-item
+              %a.nav-link{:href => "#"} Usuarios
+            %li.nav-item
+              = button_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "btn btn-transparent"
+
+    .container-fluid
+      = yield
+>>>>>>> feature/SHJ-C13656

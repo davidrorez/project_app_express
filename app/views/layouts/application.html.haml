@@ -19,35 +19,35 @@
           }
         }
   %body
-    #container
-      %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.sticky-top
-        .container-fluid
-          %a.navbar-brand{:href => "/"} Administrador
-          %button.navbar-toggler{"type" => "button", "data-bs-toggle" => "collapse", "data-bs-target" => "#navbarNav", "aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation"}
-            %span.navbar-toggler-icon
-          #navbarNav.collapse.navbar-collapse
-            %ul.navbar-nav.ms-auto
+    %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+      .container-fluid
+        %a.navbar-brand{:href => "/"} Administrador
+        %button.navbar-toggler{"type" => "button", "data-bs-toggle" => "collapse", "data-bs-target" => "#navbarNav", "aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation"}
+          %span.navbar-toggler-icon
+        #navbarNav.collapse.navbar-collapse
+          %ul.navbar-nav.ms-auto
+            %li.nav-item
+              %a.nav-link{:href => "/users/login"} Iniciar sesion
+            %li.nav-item
+              %a.nav-link{:href => "#"} Usuarios
+            %li.nav-item
+              = button_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "btn btn-transparent"
+
+    .container-fluid
+      .row
+        %nav.col-12.col-md-3.col-lg-2.d-md-block.bg-dark.sidebar
+          %div.sidebar-sticky
+            %ul.nav.flex-column
               %li.nav-item
                 %a.nav-link{:href => "/"} Inicio
               %li.nav-item
                 %a.nav-link{:href => "#"} Usuarios
               %li.nav-item
-                %a.nav-link{:href => "#"} Cerrar sesión
-
-      .container-fluid
-        .row
-          .col-md-3.col-lg-2.d-md-block.bg-dark.sidebar
-            %div.sidebar-sticky
-              %ul.nav.flex-column
-                %li.nav-item
-                  %a.nav-link{:href => "/dishes"} Platos
-                %li.nav-item
-                  %a.nav-link{:href => "#"} Usuarios
-                %li.nav-item
-                  %a.nav-link{:href => "#"} Clientes
-                %li.nav-item
-                  %a.nav-link{:href => "#"} Pedidos
-                %li.nav-item
-                  %a.nav-link{:href => "/tests"} Prueba
-          .col-12.col-md-9.ms-sm-auto.col-lg-10.px-md-4.mt-4
-            = yield
+                %a.nav-link{:href => "#"} Clientes
+              %li.nav-item
+                %a.nav-link{:href => "#"} Pedidos
+              %li.nav-item
+                %a.nav-link{:href => "/tests"} Prueba
+        .col-12.col-md-9.ms-sm-auto.col-lg-10.px-md-4
+          
+          = yield

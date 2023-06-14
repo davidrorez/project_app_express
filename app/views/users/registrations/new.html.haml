@@ -1,0 +1,22 @@
+%h2 Sign up
+= form_for(@user, as: 'user', url: new_user_session_path) do |f|
+
+  = render "users/shared/error_messages", resource: resource
+  .form-group.mx-4 
+    = f.label :email, class: "form-label required"
+    .div.w-25 
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
+  .form-group.mx-4 
+    = f.label :password
+    - if @minimum_password_length
+      %em
+        (#{@minimum_password_length} characters minimum)
+    %br/
+    = f.password_field :password, autocomplete: "new-password"
+  .form-group.mx-4 
+    = f.label :password_confirmation
+    %br/
+    = f.password_field :password_confirmation, autocomplete: "new-password"
+  .actions
+    = f.submit "Sign up"
+= render "users/shared/links"
