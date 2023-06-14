@@ -1,4 +1,5 @@
 class TestsController < ApplicationController
+  
   before_action :set_test, only: %i[ show edit update destroy ]
 
   # GET /tests or /tests.json
