@@ -2,25 +2,37 @@ es:
   application:
     list_of: Lista de %{model}
     new_model: Nuevo %{model}
+    edit_model: Editar %{model}
     show: Mostrar
     edit: Editar
     save: Guardar
     back: Atras
     delete: Eliminar
-    create: Crear usuario
-    cruds_available: tema disponible
+    create: Crear
     error: Error
     created: Creado Exitosamente
     edited: Actualizado Exitosamente
     destroyed: Borrado Exitosamente
     select: Seleccione
     actions: Opciones
+    state: Estado
+    not_available: No disponible
+
   activerecord:
     attributes:
       test:
         name: Nombre
         year: Año
+      dish:
+        name: Nombre
+        description: Descripción
+        price: Precio
+        photo: Fotografía
+        available: Disponible
     modules:
+      dish:
+        one: Plato
+        other: Platos
     errors:
       models:
 

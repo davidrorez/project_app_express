@@ -9,6 +9,8 @@ gem 'bootstrap', '~> 5.2.3'
 gem "bootsnap", require: false
 gem 'font-awesome-sass', '~> 6.4.0'
 gem 'haml'
+gem 'devise'
+gem 'active_storage_validations'
 gem 'httparty'
 gem "importmap-rails"
 gem "jbuilder"

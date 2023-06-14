@@ -1,0 +1,24 @@
+%h1.mt-2.mx-4
+  = t('activerecord.modules.dish.one')
+.div.m-4
+  .card
+    .card-body 
+      %h5.card-title
+        = t('activerecord.attributes.dish.name')
+      %p.card-text= @dish.name
+      %h5.card-title
+        = t('activerecord.attributes.dish.description')
+      %p.card-text=@dish.description
+      %h5.card-title
+        = t('activerecord.attributes.dish.price')
+      %p.card-text=@dish.price
+      %h5.card-title
+        = t('activerecord.attributes.dish.photo')
+      %p.card-text=image_tag url_for(@dish.photo), style: 'max-width: 150px; max-height: 150px;'
+      %h5.card-title
+        = t('application.state')
+      %p.card-text=@dish.available? ? t('activerecord.attributes.dish.available') : t('application.not_available')
+
+.row.mt-4.mx-5
+  .d-grid.gap-2.d-md-block.text-center
+    = link_to t('application.back'), dishes_path, class: "btn btn-secondary btn-block" 
