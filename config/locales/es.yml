@@ -1,4 +1,10 @@
 es:
+  devise:
+    failure:
+      not_found_in_database: No se encontró en la base de datos
+      user:
+        unauthenticated: "Nota: solo pueden acceder los administradores"
+        invalid: Correo o contraseña no validos
   application:
     list_of: Lista de %{model}
     new_model: Nuevo %{model}
@@ -17,6 +23,9 @@ es:
     actions: Opciones
     state: Estado
     not_available: No disponible
+    log_in: Entrar
+    sign_up: Registrarse
+    send: Enviar
 
   activerecord:
     attributes:
@@ -29,6 +38,14 @@ es:
         price: Precio
         photo: Fotografía
         available: Disponible
+      user:
+        email: Correo electrónico
+        password: Contraseña
+        password_confirmation: Confirmar contraseña
+        role: Rol
+        types_role:
+          admin: Administrador
+          kitchen: Cocina
     modules:
       dish:
         one: Plato

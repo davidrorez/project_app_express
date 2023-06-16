@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     before_action :authenticate_user!
-    layout 'login', only: [:new, :show] # Usa el layout 'application' para las acciones index y show
+    layout 'login', only: [:new, :show] 
 
     def index
       

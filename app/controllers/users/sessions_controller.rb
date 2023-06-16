@@ -1,29 +1,36 @@
-# frozen_string_literal: true
-
 class Users::SessionsController < Devise::SessionsController
-  # before_action :configure_sign_in_params, only: [:create]
+  before_action :check_admin_role, only: [:create]
+  before_action :check_invalid_credentials, only: [:create]
 
-  #def new
-   # super
-  #end
+  private
 
-  # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def check_admin_role
+    user = User.find_by(email: params[:user][:email])
 
-  # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+    if user.nil?
+      flash[:alert] = "El correo electrónico no existe"
+      redirect_to new_user_session_path
+    elsif user.role != "admin"
+      flash[:alert] = "No eres administrador"
+      redirect_to new_user_session_path
+    end 
+  end
 
-  # protected
 
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_in_params
-  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
-  # end
-  def after_sign_in_path_for(resource)
-    root_path # Cambia esto por la ruta que desees utilizar con el layout 'application'
+  def check_invalid_credentials
+    user = User.find_by(email: params[:user][:email])
+
+    if user.nil? || !user.valid_password?(params[:user][:password])
+      flash[:alert] = "Correo o contraseña inválidos."
+      redirect_to new_user_session_path
+    end 
+  end
+
+  def initialize_user_object
+    @user = User.new(user_params)
+  end
+
+  def user_params
+    params.require(:user).permit(:email, :password)
   end
 end
