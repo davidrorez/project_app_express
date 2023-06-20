@@ -1,0 +1,28 @@
+class Users::SessionsController < Devise::SessionsController
+  layout 'login'
+  before_action :check_admin_role, only: [:create]
+  before_action :check_invalid_credentials, only: [:create]
+
+  private
+
+  def check_admin_role
+    user = User.find_by(email: params[:user][:email])
+
+    if user.nil?
+      flash[:alert] = "El correo electrónico no existe"
+      redirect_to new_user_session_path
+    elsif user.role != "admin"
+      flash[:alert] = "No eres administrador"
+      redirect_to new_user_session_path
+    end 
+  end
+
+  def check_invalid_credentials
+    user = User.find_by(email: params[:user][:email])
+
+    if user.nil? || !user.valid_password?(params[:user][:password])
+      flash[:alert] = "Correo o contraseña inválidos"
+      redirect_to new_user_session_path
+    end 
+  end
+end

@@ -1,26 +1,86 @@
 es:
+  devise:
+    failure:
+      not_found_in_database: No se encontró en la base de datos
+      user:
+        unauthenticated: "Nota: solo administradores tienen acceso"
+        invalid: Correo o contraseña no validos
   application:
     list_of: Lista de %{model}
     new_model: Nuevo %{model}
+    edit_model: Editar %{model}
     show: Mostrar
     edit: Editar
     save: Guardar
     back: Atras
     delete: Eliminar
-    create: Crear usuario
-    cruds_available: tema disponible
+    create: Crear
     error: Error
     created: Creado Exitosamente
     edited: Actualizado Exitosamente
     destroyed: Borrado Exitosamente
     select: Seleccione
     actions: Opciones
+    state: Estado
+    log_in: Ingresar
+    sign_up: Registrarse
+    send: Enviar
+    email_placeholder: Correo electrónico
+    password_placeholder: Contraseña (mínimo 6 caracteres)
+    password_confirmation_placeholder: Ingresa de nuevo la contraseña
+    full_name: Nombre completo
+
   activerecord:
     attributes:
       test:
         name: Nombre
         year: Año
+      dish:
+        name: Nombre
+        description: Descripción
+        price: Precio
+        photo: Fotografía
+        state: Estado
+        types_state:
+          available: Disponible
+          not_available: No disponible
+      user:
+        email: Correo electrónico
+        password: Contraseña
+        password_confirmation: Confirmar contraseña
+        role: Rol
+        types_role:
+          admin: Administrador
+          kitchen: Cocina
+      client:
+        first_name: Nombre
+        last_name: Apellido
+        email: Correo electrónico
+        password: Contraseña
+        physical_address: Dirección física
+        state: Estado
+        types_state:
+          enable: Habilitado
+          disable: Deshabilitado
+      order:
+        state: Estado
+        created_at: Fecha de creación
+        types_state:
+          on_Time: A Tiempo
+          delayed: Sobre Tiempo
+          late: Demorado
+          cancelled: Cancelado
+          delivered: Entregado   
     modules:
+      dish:
+        one: Plato
+        other: Platos
+      client:
+        one: Cliente
+        other: Clientes
+      order:
+        one: Orden
+        other: Ordenes
     errors:
       models:
 

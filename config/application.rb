@@ -17,5 +17,6 @@ module BaseProject2023
         resource '*', headers: :any, methods: [:get, :post, :put, :delete, :options]
       end
     end
+    
   end
 end
