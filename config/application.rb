@@ -17,5 +17,7 @@ module BaseProject2023
         resource '*', headers: :any, methods: [:get, :post, :put, :delete, :options]
       end
     end
+
+    config.time_zone = 'America/Costa_Rica'
   end
 end

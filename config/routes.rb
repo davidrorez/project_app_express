@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :oder_dishes
+  resources :order_dishes
+
   devise_for :users, path_names: {
     sign_in: 'login',
     sign_out: 'logout',
@@ -6,7 +9,8 @@ Rails.application.routes.draw do
     confirmation: 'verification',
     unlock: 'unblock',
     registration: 'register',
-    sign_up: 'sign_up'
+    sign_up: 'sign_up',
+    password_new: 'recover_password'
   }, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
@@ -14,8 +18,18 @@ Rails.application.routes.draw do
     confirmations: 'users/confirmations'
   }
 
+  namespace :api, defaults: { format: 'json' } do
+    resources :users
+    resources :clients
+  end
+  
+
+  resources :orders
+  resources :clients
   resources :tests
   resources :dishes
+  resources :users
+
 
   root "dashboards#index"
 end

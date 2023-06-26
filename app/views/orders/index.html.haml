@@ -1,0 +1,46 @@
+%div.d-flex.align-items-center.justify-content-between
+  %h1.mt-2 Ordenes
+  %div.float-end.pb-4.mt-4
+    = link_to t('application.create'), new_order_path, class: "btn btn-primary"
+    %div.dropdown
+      %button.btn.btn-primary.dropdown-toggle{"type" => "button", "data-bs-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false"}
+        = t('Idea filtar')
+      .dropdown-menu.dropdown-menu-end
+        = link_to t('filter_by_customer'), orders_path(filter: :customer), class: "dropdown-item"
+        = link_to t('filter_by_date'), orders_path(filter: :date), class: "dropdown-item"
+        = link_to t('filter_by_state'), orders_path(filter: :state), class: "dropdown-item"
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th= t('application.full_name')
+      %th= t('activerecord.attributes.order.created_at')
+      %th= t('activerecord.modules.order.one')
+      %th= t('activerecord.attributes.order.state')
+      %th
+
+  %tbody
+    - @orders.each do |order|
+      %tr
+        %td= order.client.first_name + " " + order.client.last_name
+        %td= order.created_at.strftime("%d-%m-%Y %H:%M:%S")
+        %td= order.dishes.map(&:name).join(", ")
+        %td 
+          - if order.delivered?
+            = t('activerecord.attributes.order.types_state.delivered')
+          - elsif order.on_Time?
+            = t('activerecord.attributes.order.types_state.on_Time')
+          - elsif order.delayed?
+            = t('activerecord.attributes.order.types_state.delayed')
+          - elsif order.late?
+            = t('activerecord.attributes.order.types_state.late')
+          - elsif order.cancelled?
+            = t('activerecord.attributes.order.types_state.cancelled')
+        %td.d-flex.justify-content-end
+          .btn-group.dropdown
+            %button.btn.btn-success.dropdown-toggle{"type" => "button", "data-bs-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false"}
+              = t('application.actions')
+            .dropdown-menu.dropdown-menu-end
+              = link_to t('application.show'), order, class: "dropdown-item"
+              = link_to t('application.edit'), edit_order_path(order), class: "dropdown-item"
+              = button_to t('application.delete'), order, method: :delete, class: "dropdown-item", data: { confirm: t('application.confirm_delete') }

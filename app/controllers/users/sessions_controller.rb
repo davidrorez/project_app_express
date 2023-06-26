@@ -1,4 +1,5 @@
 class Users::SessionsController < Devise::SessionsController
+  layout 'login'
   before_action :check_admin_role, only: [:create]
   before_action :check_invalid_credentials, only: [:create]
 
@@ -16,21 +17,12 @@ class Users::SessionsController < Devise::SessionsController
     end 
   end
 
-
   def check_invalid_credentials
     user = User.find_by(email: params[:user][:email])
 
     if user.nil? || !user.valid_password?(params[:user][:password])
-      flash[:alert] = "Correo o contraseña inválidos."
+      flash[:alert] = "Correo o contraseña inválidos"
       redirect_to new_user_session_path
     end 
-  end
-
-  def initialize_user_object
-    @user = User.new(user_params)
-  end
-
-  def user_params
-    params.require(:user).permit(:email, :password)
   end
 end

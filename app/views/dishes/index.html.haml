@@ -21,10 +21,8 @@
           %td= dish.name
           %td= dish.description
           %td= dish.price
-          %td
-            = image_tag url_for(dish.photo), style: 'max-width: 150px; max-height: 150px;'
-          %td 
-            = dish.available? ? t('activerecord.attributes.dish.available') : t('application.not_available')
+          %td= image_tag url_for(dish.photo), style: 'max-width: 150px; max-height: 150px;'
+          %td= dish.available? ? t('activerecord.attributes.dish.types_state.available') : t('activerecord.attributes.dish.types_state.not_available')
           %td
             .btn-group.dropdown
               %button.btn.btn-success.dropdown-toggle{"type" => "button", "data-bs-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false"}

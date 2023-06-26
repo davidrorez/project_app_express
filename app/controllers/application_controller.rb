@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
-    before_action :authenticate_user!
-    layout 'login', only: [:new, :show] 
+    #before_action :authenticate_user! esta line se comenta solo hacer pruebas en postman
 
     def index
       
@@ -11,6 +10,6 @@ class ApplicationController < ActionController::Base
     end
   
     def new
-        render layout: 'application'
+        
     end
 end

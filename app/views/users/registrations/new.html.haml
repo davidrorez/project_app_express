@@ -5,15 +5,15 @@
   .form-group.mx-4.text-center
     = f.label :email, class: "form-label required"
     .div.w-100.text-center.mx-auto(style="max-width: 400px; margin: 0 auto;")
-      = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: t('application.email_placeholder')
   .form-group.mx-4.text-center.mt-2
     = f.label :password, class: "form-label required"
     .div.w-100.text-center.mx-auto(style="max-width: 400px; margin: 0 auto;")
-      = f.password_field :password, autocomplete: "new-password", class: "form-control"
+      = f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: t('application.password_placeholder')
   .form-group.mx-4.text-center.mt-2
     = f.label :password_confirmation, class: "form-label required"
     .div.w-100.text-center.mx-auto(style="max-width: 400px; margin: 0 auto;")
-      = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"
+      = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: t('application.password_confirmation_placeholder')
   .form-group.mx-4.text-center.mt-2
     = f.label :role, class: "form-label required"
     .div.w-100.text-center.mx-auto(style="max-width: 400px; margin: 0 auto;")
@@ -21,6 +21,8 @@
   .row.mt-4
     .col.text-center
       .div.w-100.text-center.mx-auto(style="max-width: 400px; margin: 0 auto;")
-        = button_tag t('application.create'), class: "btn btn-primary btn-block", style: "width: 100%;"
+        = f.submit t('application.create'), class: "btn btn-primary btn-block", style: "width: 100%;"
+        .pt-1.mb-2
+          %p.mb-2.pb-lg-2{style: "color: #393f81;"}
         = render "users/shared/links"
         

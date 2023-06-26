@@ -1,0 +1,10 @@
+= form_for @order do |f|
+  <!-- Campos de la orden -->
+
+  = f.fields_for :order_dishes do |order_dish_fields|
+    <!-- Campos de cada registro de order_dishes -->
+    = order_dish_fields.collection_select :dish_id, @dishes, :last, :first, prompt: 'Selecciona un plato'
+    <!-- Otros campos de order_dishes -->
+
+  = f.submit "Crear Orden"
+

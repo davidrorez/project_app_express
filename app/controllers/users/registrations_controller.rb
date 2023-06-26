@@ -1,9 +1,16 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  layout 'login'
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
-  def new
-    @user = User.new
+  def create
+    super do |resource|
+      if resource.persisted?
+        set_flash_message! :notice, :signed_up
+        redirect_to new_user_session_path
+        return 
+      end
+    end
   end
   
   protected
@@ -16,8 +23,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:account_update, keys: [:role])
   end
 
-  #ver porqué no funciona
-  def after_sign_up_path_for(resource)
-    new_user_session_path
-  end
 end

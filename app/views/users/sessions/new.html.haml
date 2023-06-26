@@ -22,9 +22,11 @@
   .row.mt-4
     .col.text-center
       .div.w-100.text-center.mx-auto(style="max-width: 400px; margin: 0 auto;")
-        = button_tag t('application.log_in'), class: "btn btn-primary btn-block", style: "width: 100%;"
-        = render "users/shared/links"
+        = f.submit t('application.log_in'), class: "btn btn-primary btn-block", style: "width: 100%;"
+        .pt-1.mb-2
+          %p.mb-2.pb-lg-2{style: "color: #393f81;"}
+          = render "users/shared/links" 
 
         - if flash[:alert].present?
-          .alert.alert-danger.text-center.mt-2
+          .alert.alert-danger.text-center
             %p= flash[:alert]

@@ -27,11 +27,9 @@
         #navbarNav.collapse.navbar-collapse
           %ul.navbar-nav.ms-auto
             %li.nav-item
-              %a.nav-link{:href => "/users/login"} Iniciar sesion
+              %a.nav-link{:href => "/users/login"}Iniciar Sesión
             %li.nav-item
-              %a.nav-link{:href => "#"} Usuarios
-            %li.nav-item
-              = button_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "btn btn-link"
+              %a.nav-link{:href => "/users/register/sign_up"} Registrarse
 
     .container-fluid
       = yield

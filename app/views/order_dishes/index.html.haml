@@ -1,0 +1,27 @@
+%h1 Listing order_dishes
+
+%table
+  %thead
+    %tr
+      %th OrderDish ID
+      %th Order ID
+      %th Order State
+      %th Dishes
+      %th
+      %th
+      %th
+
+  %tbody
+    - @order_dishes.each do |order_dish|
+      %tr
+        %th= order_dish.id
+        %td= order_dish.order.id
+        %td= order_dish.order.state
+        %td= order_dish.order.dishes.pluck(:name).join(", ")
+        %td= link_to 'Show', order_dish
+        %td= link_to 'Edit', edit_order_dish_path(order_dish)
+        %td= link_to 'Destroy', order_dish, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Order dish', new_order_dish_path

@@ -1,4 +1,5 @@
 class DishesController < ApplicationController
+  layout 'application'
   before_action :set_dish, only: %i[ show edit update destroy ]
 
   # GET /dishes or /dishes.json
@@ -65,6 +66,6 @@ class DishesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def dish_params
-      params.require(:dish).permit(:name, :description, :price, :photo, :available)
+      params.require(:dish).permit(:name, :description, :price, :photo, :state)
     end
 end

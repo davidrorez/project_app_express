@@ -1,5 +1,5 @@
 %div.d-flex.align-items-center.justify-content-between
-  %h1.mt-2 Usuarios
+  %h1.mt-2 Pruebas
   %div.float-end.pb-4.mt-4
     = link_to t('application.create'), new_test_path, class: "btn btn-primary"
 
@@ -8,19 +8,15 @@
     %tr
       %th= t('activerecord.attributes.test.name')
       %th= t('activerecord.attributes.test.year')
-      %th= t('activerecord.attributes.test.name')
-      %th= t('activerecord.attributes.test.year')
-      %th= t('activerecord.attributes.test.name')
-      %th
+      %th= t('activerecord.attributes.test.created_at') 
+      %th= t('application.actions')
 
   %tbody
-    -@tests.each do |test|
+    - @tests.each do |test|
       %tr
         %td= test.name
         %td= test.year
-        %td= test.name
-        %td= test.year
-        %td= test.name
+        %td= test.created_at.strftime("%d-%m-%Y %H:%M:%S")
         %td.d-flex.justify-content-end
           .btn-group.dropdown
             %button.btn.btn-success.dropdown-toggle{"type" => "button", "data-bs-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false"}
