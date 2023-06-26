@@ -1,0 +1,37 @@
+%div.d-flex.align-items-center.justify-content-between
+  %h1.mt-2
+    = t('activerecord.modules.dish.other')
+  %div.float-end.pb-4.mt-4
+    = link_to t('application.create'), new_dish_path, class: "btn btn-primary"
+
+.div.table-responsive
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= t('activerecord.attributes.dish.name')
+        %th= t('activerecord.attributes.dish.description')
+        %th= t('activerecord.attributes.dish.price')
+        %th= t('activerecord.attributes.dish.photo')
+        %th= t('application.state')
+        %th
+
+    %tbody
+      - @dishes.each do |dish|
+        %tr
+          %td= dish.name
+          %td= dish.description
+          %td= dish.price
+          %td
+            - if dish.photo.present?
+              = image_tag(url_for(dish.photo), style: 'max-width: 150px; max-height: 150px;')
+            - else
+              Sin foto aún
+          %td= dish.available? ? t('activerecord.attributes.dish.types_state.available') : t('activerecord.attributes.dish.types_state.not_available')
+          %td
+            .btn-group.dropdown
+              %button.btn.btn-success.dropdown-toggle{"type" => "button", "data-bs-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false"}
+                = t('application.actions')
+              .dropdown-menu.dropdown-menu-end
+                = link_to t('application.show'), dish, class: "dropdown-item"
+                = link_to t('application.edit'), edit_dish_path(dish), class: "dropdown-item"
+                = button_to t('application.delete'), dish, method: :delete, class: "dropdown-item", data: { confirm: t('application.confirm_delete') }
