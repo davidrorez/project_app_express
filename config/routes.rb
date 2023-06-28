@@ -16,6 +16,9 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     confirmations: 'users/confirmations'
   }
+  namespace :api, defaults: { format: 'json' } do
+    resources :users
+  end
 
   resources :tests
   resources :dishes

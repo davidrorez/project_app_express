@@ -81,6 +81,9 @@ es:
       order:
         one: Orden
         other: Ordenes
+      user:
+        one: Usuario
+        other: Usuarios
     errors:
       models:
 
