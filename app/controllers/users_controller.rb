@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     def update
       @user = User.find(params[:id])
         if @user.update(user_params)
-          format.html { redirect_to user_url(@user), notice: 'Usuario actualizado exitosamente.' }
+          redirect_to user_url(@user), notice: 'Usuario actualizado exitosamente.' 
         else
           format.html { render :edit, status: :unprocessable_entity }
         end

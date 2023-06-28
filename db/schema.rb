@@ -74,6 +74,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_25_183607) do
   end
 
   create_table "order_dishes", force: :cascade do |t|
+    t.integer "state"
     t.bigint "order_id", null: false
     t.bigint "dish_id", null: false
     t.datetime "created_at", null: false

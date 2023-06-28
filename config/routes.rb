@@ -21,15 +21,16 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: 'json' } do
     resources :users
     resources :clients
+    resources :orders
+    resources :dishes
+    resources :order_dishes
   end
   
-
   resources :orders
   resources :clients
   resources :tests
   resources :dishes
   resources :users
-
 
   root "dashboards#index"
 end

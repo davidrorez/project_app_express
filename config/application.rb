@@ -7,6 +7,7 @@ Bundler.require(*Rails.groups)
 module BaseProject2023
   class Application < Rails::Application
     config.load_defaults 7.0
+    config.autoload_paths += %W(#{config.root}/app/jobs)
 
     I18n.load_path += Dir[Rails.root.join("config", "locales", "*.{yml}")]
     I18n.default_locale = :es

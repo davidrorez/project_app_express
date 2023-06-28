@@ -22,4 +22,5 @@
           %td= client.physical_address
           %td= client.enable? ? t('activerecord.attributes.client.types_state.enable') : t('activerecord.attributes.client.types_state.disable') 
           %td= link_to t('application.edit'), edit_client_path(client), class: "btn btn-success"
+          %td= button_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' }
 

@@ -30,6 +30,8 @@ es:
     password_placeholder: Contraseña (mínimo 6 caracteres)
     password_confirmation_placeholder: Ingresa de nuevo la contraseña
     full_name: Nombre completo
+    start_date: Fecha inicio
+    end_date: Fecha final
 
   activerecord:
     attributes:
@@ -84,5 +86,12 @@ es:
         other: Ordenes
     errors:
       models:
+
+
+
+
+
+
+      
 
 

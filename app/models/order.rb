@@ -7,5 +7,6 @@ class Order < ApplicationRecord
   validates :state, presence: true
 
   enum state: { "on_Time": 0, "delayed": 1, "late": 2, "cancelled": 3, "delivered": 4 }
-  
+
+
 end

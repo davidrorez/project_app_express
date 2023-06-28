@@ -7,6 +7,8 @@
         %ul
           - @client.errors.each do |error|
             %li= error.full_message
+    = button_to t('application.delete'), client, method: :delete, class: "dropdown-item", data: { confirm: t('application.confirm_delete') }
+
 
   .form-group.mx-4
     = f.label :state

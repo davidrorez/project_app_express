@@ -1,6 +1,6 @@
 class TestsController < ApplicationController
   
-  before_action :set_test, only: %i[ show edit update destroy ]
+  before_action :set_test, only: %i[ show edit update destroy ] # BORRAR TODO LO DE TESTS
 
   # GET /tests or /tests.json
   def index

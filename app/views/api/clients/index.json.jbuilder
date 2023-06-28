@@ -6,7 +6,6 @@ json.array! @clients do |client|
     json.physical_address client.physical_address
     json.password client.password
     json.state client.state
-    
 end
 
 

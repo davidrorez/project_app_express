@@ -21,7 +21,11 @@
           %td= dish.name
           %td= dish.description
           %td= dish.price
-          %td= image_tag url_for(dish.photo), style: 'max-width: 150px; max-height: 150px;'
+          %td
+            - if dish.photo.present?
+              = image_tag(url_for(dish.photo), style: 'max-width: 150px; max-height: 150px;')
+            - else
+              Sin foto aún
           %td= dish.available? ? t('activerecord.attributes.dish.types_state.available') : t('activerecord.attributes.dish.types_state.not_available')
           %td
             .btn-group.dropdown

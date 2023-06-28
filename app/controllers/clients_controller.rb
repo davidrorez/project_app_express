@@ -7,7 +7,6 @@ class ClientsController < ApplicationController
 
   def show
     @client = Client.find(params[:id])
-    @orders = @client.orders.includes(:dishes)
   end
 
   def new

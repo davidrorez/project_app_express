@@ -2,71 +2,54 @@ class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy ]
   before_action :set_clients
   before_action :set_dishes
-  # GET /orders or /orders.json
+
   def index
     @orders = Order.all
+    apply_filters(params[:client_id], params[:start_date], params[:end_date], params[:state])
   end
 
-  # GET /orders/1 or /orders/1.json
-  def show
-  end
+  def show; end
 
-  # GET /orders/new
   def new
     @order = Order.new
-    @order.order_dishes.build
-  end
-  
-
-  # GET /orders/1/edit
-  def edit
   end
 
-  # POST /orders or /orders.json
-# POST /orders or /orders.json
+  def edit; end
+
   def create
     @order = Order.new(order_params)
 
-    respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
-        format.json { render :show, status: :created, location: @order }
+        redirect_to @order, notice: 'Order was successfully created.'
       else
-        format.html { render :new }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+        render :new
       end
-    end
   end
 
-
-  # PATCH/PUT /orders/1 or /orders/1.json
   def update
-    respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to order_url(@order), notice: "Order was successfully updated." }
-        format.json { render :show, status: :ok, location: @order }
+        redirect_to order_url(@order), notice: "Order was successfully updated."
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+        render :edit, status: :unprocessable_entity
       end
-    end
   end
 
-  # DELETE /orders/1 or /orders/1.json
   def destroy
     @order.order_dishes.destroy_all 
     @order.destroy
-
-    respond_to do |format|
-      format.html { redirect_to orders_url, notice: "Order was successfully destroyed." }
-      format.json { head :no_content }
-    end
+      redirect_to orders_url, notice: "Order was successfully destroyed."
   end
+
 
   private
 
+    def apply_filters(client_id, start_date, end_date, state)
+      @orders = @orders.where(client_id: client_id) if client_id.present?
+      @orders = @orders.where("created_at >= ?", start_date.to_date.beginning_of_day) if start_date.present?
+      @orders = @orders.where("created_at <= ?", end_date.to_date.end_of_day) if end_date.present?
+      @orders = @orders.where(state: state) if state.present?
+    end
 
-    # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])
     end
@@ -79,9 +62,7 @@ class OrdersController < ApplicationController
       @dishes = Dish.all.map {|dish| ["#{dish.name} #{dish.price}", dish.id]} 
     end
 
-    # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:client_id, order_dishes_attributes: [:dish_id, :quantity])
+      params.require(:order).permit(:client_id, :state)
     end
-    
 end

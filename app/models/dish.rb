@@ -9,7 +9,6 @@ class Dish < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
-  #validates :photo, attached: true, content_type: ['image/png', 'image/jpeg', 'image/jpg']
   validates :state, presence: true
   enum state: {"available": 0, "unavailable": 1}
   
