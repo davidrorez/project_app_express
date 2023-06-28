@@ -1,0 +1,31 @@
+%div.d-flex.align-items-center.justify-content-between
+  %h1.mt-2 Usuarios
+  %div.float-end.pb-4.mt-4
+    = link_to t('application.create'), new_test_path, class: "btn btn-primary"
+
+%table.table.table-striped
+  %thread
+    %tr
+      %th= t('activerecord.attributes.test.name')
+      %th= t('activerecord.attributes.test.year')
+      %th= t('activerecord.attributes.test.name')
+      %th= t('activerecord.attributes.test.year')
+      %th= t('activerecord.attributes.test.name')
+      %th
+
+  %tbody
+    -@tests.each do |test|
+      %tr
+        %td= test.name
+        %td= test.year
+        %td= test.name
+        %td= test.year
+        %td= test.name
+        %td.d-flex.justify-content-end
+          .btn-group.dropdown
+            %button.btn.btn-success.dropdown-toggle{"type" => "button", "data-bs-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false"}
+              = t('application.actions')
+            .dropdown-menu.dropdown-menu-end
+              = link_to t('application.show'), test, class: "dropdown-item"
+              = link_to t('application.edit'), edit_test_path(test), class: "dropdown-item"
+              = button_to t('application.delete'), test, method: :delete, class: "dropdown-item", data: { confirm: t('application.confirm_delete') }
