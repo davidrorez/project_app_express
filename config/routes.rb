@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :orders
-  resources :clients
+  resources :order_dishes
+  
   devise_for :users, path_names: {
     sign_in: 'login',
     sign_out: 'logout',
@@ -18,8 +18,12 @@ Rails.application.routes.draw do
   }
   namespace :api, defaults: { format: 'json' } do
     resources :users
+    resources :orders
+    resources :clients
   end
 
+  resources :orders
+  resources :clients
   resources :tests
   resources :dishes
   resources :users
