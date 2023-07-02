@@ -1,6 +1,6 @@
 %div.d-flex.align-items-center.justify-content-between
   %h1.mt-2
-    = t('activerecord.modules.dish.other')
+    = t('activerecord.modules.views.list_of_dishes')
   %div.float-end.pb-4.mt-4
     = link_to t('application.create'), new_dish_path, class: "btn btn-primary"
 
@@ -27,7 +27,7 @@
             - else
               Sin foto aún
           %td= dish.available? ? t('activerecord.attributes.dish.types_state.available') : t('activerecord.attributes.dish.types_state.not_available')
-          %td
+          %td.d-flex.justify-content-end
             .btn-group.dropdown
               %button.btn.btn-success.dropdown-toggle{"type" => "button", "data-bs-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false"}
                 = t('application.actions')
