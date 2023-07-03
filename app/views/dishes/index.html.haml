@@ -27,7 +27,7 @@
             - else
               Sin foto aún
           %td= dish.available? ? t('activerecord.attributes.dish.types_state.available') : t('activerecord.attributes.dish.types_state.not_available')
-          %td.d-flex.justify-content-end
+          %td
             .btn-group.dropdown
               %button.btn.btn-success.dropdown-toggle{"type" => "button", "data-bs-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false"}
                 = t('application.actions')
