@@ -1,4 +1,3 @@
-#spec
 require 'rails_helper'
 
 RSpec.describe OrderDish, type: :model do
@@ -9,12 +8,11 @@ RSpec.describe OrderDish, type: :model do
 
   describe "adding dishes to an order" do
     it "associates dishes with the order" do
-      order_dish1 = OrderDish.create(order_id: order.id, dish_id: dish1.id, state: 0)
-      order_dish2 = OrderDish.create(order_id: order.id, dish_id: dish2.id, state: 1)
+      order_dish1 = OrderDish.create(state: 0, order_id: order.id, dish_id: dish1.id)
+      order_dish2 = OrderDish.create(state: 1, order_id: order.id, dish_id: dish2.id)
 
       expect(order.order_dishes.count).to eq(2)
       expect(order.dishes).to contain_exactly(dish1, dish2)
     end
   end
 end
-

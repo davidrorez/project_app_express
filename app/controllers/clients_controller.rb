@@ -13,8 +13,7 @@ class ClientsController < ApplicationController
     @client = Client.new
   end
 
-  def edit
-  end
+  def edit;end
 
   def create
     @client = Client.new(client_params)

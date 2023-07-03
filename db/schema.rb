@@ -53,11 +53,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_25_183607) do
   end
 
   create_table "clients", force: :cascade do |t|
-    t.string "email"
     t.string "first_name"
     t.string "last_name"
-    t.string "physical_address"
+    t.string "email"
     t.string "password"
+    t.string "physical_address"
     t.integer "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -66,7 +66,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_25_183607) do
   create_table "dishes", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.decimal "price"
+    t.integer "price"
     t.binary "photo"
     t.integer "state"
     t.datetime "created_at", null: false

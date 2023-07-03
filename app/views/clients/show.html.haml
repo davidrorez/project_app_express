@@ -1,17 +1,24 @@
-%p#notice= notice
+%h1.mt-2.mx-4
+  = t('activerecord.modules.client.one')
+.div.m-4
+  .card
+    .card-body 
+      %h5.card-title
+        = t('activerecord.attributes.client.first_name')
+      %p.card-text= @client.first_name
+      %h5.card-title
+        = t('activerecord.attributes.client.last_name')
+      %p.card-text=@client.last_name
+      %h5.card-title
+        = t('activerecord.attributes.client.email')
+      %p.card-text=@client.email
+      %h5.card-title
+        = t('activerecord.attributes.client.physical_address')
+      %p.card-text=@client.physical_address
+      %h5.card-title
+        = t('application.state')
+      %p.card-text=@client.enable? ? t('activerecord.attributes.client.types_state.enable') : t('activerecord.attributes.client.types_state.disable')
 
-%p
-  %b Email:
-  = @client.email
-%p
-  %b First name:
-  = @client.first_name
-%p
-  %b Last name:
-  = @client.last_name
-%p
-  %b Physical address:
-  = @client.physical_address
-%p
-  %b Password:
-  = @client.password
+.row.mt-4.mx-5
+  .d-grid.gap-2.d-md-block.text-center
+    = link_to t('application.back'), clients_path, class: "btn btn-secondary btn-block"

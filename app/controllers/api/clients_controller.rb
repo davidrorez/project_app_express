@@ -25,11 +25,11 @@ module Api
     end
   
     def update
-        if @client.update(client_params)
-          render 'api/clients/show', status: :ok
-        else
-          render json: @client.errors, status: :unprocessable_entity
-        end
+      if @client.update(client_params)
+        render 'api/clients/show', status: :ok
+      else
+        render json: @client.errors, status: :unprocessable_entity
+      end
     end
   
     def destroy
@@ -46,4 +46,4 @@ module Api
         params.require(:client).permit(:email, :first_name, :last_name, :physical_address, :password, :state)
       end
   end
-end 
+end
