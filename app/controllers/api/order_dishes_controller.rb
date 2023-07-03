@@ -38,8 +38,13 @@ module Api
       render 'api/order_dishes/show', status: :ok
     end
 
+    #esto hay que agregarlo a develop. Solo está en mi maquina
     def change_state
-      if @order_dish.order && @order_dish.state == "ready" 
+      if @order_dish.order.state == "delivered" || @order_dish.order.state == "cancelled"
+        return
+      end
+
+      if @order_dish.order && @order_dish.state == "ready"
         Thread.new do
           begin
             sleep(20.seconds)
@@ -47,11 +52,12 @@ module Api
             sleep(40.seconds)
             @order_dish.order.update(state: 2)
           rescue StandardError => e
-            Rails.logger.error("Error updating order state: #{e.message}")
+            Rails.logger.error("Error: #{e.message}")
           end
         end
       end
     end
+    
       
     private
       def set_order_dish

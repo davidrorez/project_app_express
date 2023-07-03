@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :oder_dishes
-  resources :order_dishes
 
   devise_for :users, path_names: {
     sign_in: 'login',
@@ -24,6 +22,9 @@ Rails.application.routes.draw do
     resources :orders
     resources :dishes
     resources :order_dishes
+    devise_scope :user do
+      post 'sessions/kitchen', to: 'sessions#create_kitchen'
+    end
   end
   
   resources :orders
@@ -31,6 +32,7 @@ Rails.application.routes.draw do
   resources :tests
   resources :dishes
   resources :users
+  resources :order_dishes
 
   root "dashboards#index"
 end

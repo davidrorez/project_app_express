@@ -1,3 +1,4 @@
+#show
 json.order_dish do
     json.id @order_dish.id
     json.state @order_dish.state

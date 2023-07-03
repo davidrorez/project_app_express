@@ -11,7 +11,7 @@
       %p.card-text=@user.role
       %h5.card-title
         = t('activerecord.attributes.user.role')
-      %p.card-text=@role.admin? ? t('activerecord.attributes.user.types_role.admin') : t('activerecord.attributes.user.types_role.kitchen')
+      %p.card-text=@user.admin? ? t('activerecord.attributes.user.types_role.admin') : t('activerecord.attributes.user.types_role.kitchen')
 
 .row.mt-4.mx-5
   .d-grid.gap-2.d-md-block.text-center
