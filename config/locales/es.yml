@@ -10,6 +10,7 @@ es:
         not_saved: No se guardo
         can_not_be_saved: No se puede guardar
   application:
+    filter: Filtrar
     list_of: Lista de %{model}
     new_model: Nuevo %{model}
     edit_model: Editar %{model}
@@ -123,5 +124,12 @@ es:
         
 
 
+
+
+
+
+
+
+      
 
 

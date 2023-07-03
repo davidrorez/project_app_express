@@ -1,13 +1,10 @@
 = form_for @order do |f|
-  - if @order.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@order.errors.count, "error")} prohibited this order from being saved:"
-      %ul
-        - @order.errors.full_messages.each do |message|
-          %li= message
+  <!-- Campos de la orden -->
 
-  .field
-    = f.label :state
-    = f.number_field :state
-  .actions
-    = f.submit 'Save'
+  = f.fields_for :order_dishes do |order_dish_fields|
+    <!-- Campos de cada registro de order_dishes -->
+    = order_dish_fields.collection_select :dish_id, @dishes, :last, :first, prompt: 'Selecciona un plato'
+    <!-- Otros campos de order_dishes -->
+
+  = f.submit "Crear Orden"
+

@@ -15,24 +15,24 @@ class OrderDishesController < ApplicationController
 
   def create
     @order_dish = OrderDish.new(order_dish_params)
-    if @order_dish.save
-      redirect_to order_dish_url(@order_dish), notice: "Order dish was successfully created."
-    else
-      render :new, status: :unprocessable_entity
-    end
+      if @order_dish.save
+        redirect_to order_dish_url(@order_dish), notice: "Order dish was successfully created."
+      else
+        render :new, status: :unprocessable_entity
+      end
   end
 
   def update
-    if @order_dish.update(order_dish_params)
-      redirect_to order_dish_url(@order_dish), notice: "Order dish was successfully updated."
-    else
-      render :edit, status: :unprocessable_entity
-    end
+      if @order_dish.update(order_dish_params)
+        redirect_to order_dish_url(@order_dish), notice: "Order dish was successfully updated."
+      else
+        render :edit, status: :unprocessable_entity
+      end
   end
 
   def destroy
     @order_dish.destroy
-    redirect_to order_dishes_url, notice: "Order dish was successfully destroyed." 
+      redirect_to order_dishes_url, notice: "Order dish was successfully destroyed." 
   end
 
   private

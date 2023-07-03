@@ -1,7 +1,7 @@
 module Api
   class ClientsController < ApplicationController
-    skip_before_action :verify_authenticity_token
-    before_action :set_client, only: %i[ show edit update destroy ]
+  skip_before_action :verify_authenticity_token
+  before_action :set_client, only: %i[ show edit update destroy ]
   
     def index
       @clients = Client.all

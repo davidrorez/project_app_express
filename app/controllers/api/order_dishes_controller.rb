@@ -18,11 +18,11 @@ module Api
       
     def create
       @order_dish = OrderDish.new(order_dish_params)
-      if @order_dish.save
-        render 'api/order_dishes/show', status: :created
-      else
-        render json: @order_dish.errors, status: :unprocessable_entity
-      end
+        if @order_dish.save
+          render 'api/order_dishes/show', status: :created
+        else
+          render json: @order_dish.errors, status: :unprocessable_entity
+        end
     end
       
     def update
@@ -38,8 +38,13 @@ module Api
       render 'api/order_dishes/show', status: :ok
     end
 
+    #esto hay que agregarlo a develop. Solo está en mi maquina
     def change_state
-      if @order_dish.order && @order_dish.state == "ready" 
+      if @order_dish.order.state == "delivered" || @order_dish.order.state == "cancelled"
+        return
+      end
+
+      if @order_dish.order && @order_dish.state == "ready"
         Thread.new do
           begin
             sleep(20.seconds)
@@ -47,11 +52,12 @@ module Api
             sleep(40.seconds)
             @order_dish.order.update(state: 2)
           rescue StandardError => e
-            Rails.logger.error("Error updating order state: #{e.message}")
+            Rails.logger.error("Error: #{e.message}")
           end
         end
       end
     end
+    
       
     private
       def set_order_dish
@@ -62,4 +68,4 @@ module Api
         params.require(:order_dish).permit(:order_id, :dish_id, :state)
       end
   end
-end
+end 

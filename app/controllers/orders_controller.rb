@@ -19,25 +19,25 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
 
-    if @order.save
-      redirect_to @order, notice: 'Order was successfully created.'
-    else
-      render :new
-    end
+      if @order.save
+        redirect_to @order, notice: 'Order was successfully created.'
+      else
+        render :new
+      end
   end
 
   def update
-    if @order.update(order_params)
-      redirect_to order_url(@order), notice: "Order was successfully updated."
-    else
-      render :edit, status: :unprocessable_entity
-    end
+      if @order.update(order_params)
+        redirect_to order_url(@order), notice: "Order was successfully updated."
+      else
+        render :edit, status: :unprocessable_entity
+      end
   end
 
   def destroy
     @order.order_dishes.destroy_all 
     @order.destroy
-    redirect_to orders_url, notice: "Order was successfully destroyed."
+      redirect_to orders_url, notice: "Order was successfully destroyed."
   end
 
 
@@ -63,6 +63,6 @@ class OrdersController < ApplicationController
     end
 
     def order_params
-      params.require(:order).permit(:state, :client_id)
+      params.require(:order).permit(:client_id, :state)
     end
 end
