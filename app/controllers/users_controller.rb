@@ -40,6 +40,7 @@ class UsersController < ApplicationController
     def destroy
       @user = User.find(params[:id])
       @user.destroy
+      sign_out(@user)
       redirect_to users_url, notice: 'Usuario eliminado exitosamente.'
     end
   

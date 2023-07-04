@@ -22,4 +22,4 @@
             .dropdown-menu.dropdown-menu-end
               = link_to t('application.show'), user, class: "dropdown-item"
               = link_to t('application.edit'), edit_user_path(user), class: "dropdown-item"
-              = button_to t('application.delete'), user, method: :delete, class: "dropdown-item", data: { confirm: t('application.confirm_delete') }
+              = button_to t('application.delete'), user_path(user), method: :delete, class: "dropdown-item", data: { confirm: t('application.confirm_delete') }
