@@ -1,5 +1,6 @@
 module Api
   class OrderDishesController < ApplicationController
+    skip_before_action :authenticate_user!
     skip_before_action :verify_authenticity_token
     before_action :set_order_dish, only: %i[ show edit update destroy ]
     after_action :change_state, only: %i[ create ]
