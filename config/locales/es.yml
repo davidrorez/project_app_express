@@ -5,6 +5,8 @@ es:
       user:
         unauthenticated: "Nota: solo administradores tienen acceso"
         invalid: Correo o contraseña no validos
+    shared:
+      remember_me: Recordar usuario
   errors: 
     messages:
         not_saved: No se guardo
@@ -37,6 +39,7 @@ es:
     can_not_be_saved: No se puede guardar
     end_date: fecha de entrega del pedido
     start_date: fecha de solicitud del pedido
+    forgot_password: Olvidaste tu contraseña
 
   activerecord:
     attributes:
@@ -55,7 +58,7 @@ es:
       user:
         email: Correo electrónico
         password: Contraseña
-        password_confirmation: Confirmar contraseña,
+        password_confirmation: Confirmar contraseña
         role: Rol
         types_role:
           admin: Administrador
@@ -84,10 +87,10 @@ es:
         one: Plato
         other: Platos
       client:
-        one: cliente
+        one: Cliente
         other: Clientes
       order:
-        one: orden
+        one: Orden
         other: Ordenes
       user:
         one: Usuario
