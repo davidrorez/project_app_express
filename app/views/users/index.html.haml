@@ -1,9 +1,9 @@
 %div.d-flex.align-items-center.justify-content-between
   %h1 Usuarios
-  %div.float-end.pb-4.mt-4
+  %div.float-end.pb-4-mt-1
     = link_to t('application.create'), new_user_path, class: "btn btn-primary"
 
-%table.table.table-striped
+%table.table.bg-white.rounded.shadow-sm.table-hover
   %thread
     %tr
       %th= t('activerecord.attributes.user.email')

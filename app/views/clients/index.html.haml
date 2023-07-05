@@ -1,26 +1,29 @@
 %div.d-flex.align-items-center.justify-content-between
-  %h1.mt-2
+  %h1
     = t('activerecord.modules.client.other')
   %div.float-end.pb-4.mt-4
     = link_to ('Crear pruebas'), new_client_path, class: "btn btn-primary"
 
-.div.table-responsive
-  %table.table.table-striped
-    %thead
+%table.table.bg-white.rounded.shadow-sm.table-hover
+  %thead
+    %tr
+      %th= t('activerecord.attributes.client.email')
+      %th= t('application.full_name')
+      %th= t('activerecord.attributes.client.physical_address')
+      %th= t('application.state')
+      %th
+
+  %tbody
+    - @clients.each do |client|
       %tr
-        %th= t('activerecord.attributes.client.email')
-        %th= t('application.full_name')
-        %th= t('activerecord.attributes.client.physical_address')
-        %th= t('application.state')
-        %th
-
-    %tbody
-      - @clients.each do |client|
-        %tr
-          %td= client.email
-          %td= client.first_name + " " + client.last_name
-          %td= client.physical_address
-          %td= client.enable? ? t('activerecord.attributes.client.types_state.enable') : t('activerecord.attributes.client.types_state.disable') 
-          %td= link_to t('application.edit'), edit_client_path(client), class: "btn btn-success"
-          %td= button_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' }
-
+        %td= client.email
+        %td= client.first_name + " " + client.last_name
+        %td= client.physical_address
+        %td= client.enable? ? t('activerecord.attributes.client.types_state.enable') : t('activerecord.attributes.client.types_state.disable') 
+        %td
+          .btn-group.dropdown
+            %button.btn.btn-success.dropdown-toggle{"type" => "button", "data-bs-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false"}
+              = t('application.actions')
+            .dropdown-menu.dropdown-menu-end
+              = link_to t('application.show'), client, class: "dropdown-item"
+              = link_to t('application.edit'), edit_client_path(client), class: "dropdown-item"
