@@ -1,5 +1,6 @@
 %div.d-flex.align-items-center.justify-content-between
-  %h1 Usuarios
+  %h1 
+    = t('application.list_of', model: t('activerecord.modules.user.min'))
   %div.float-end.pb-4-mt-1
     = link_to t('application.create'), new_user_path, class: "btn btn-primary"
 

@@ -1,5 +1,6 @@
 %div.d-flex.align-items-center.justify-content-between
-  %h1 Ordenes
+  %h1 
+    = t('application.list_of', model: t('activerecord.modules.order.min'))
   - if params[:client_id].present? || params[:start_date].present? || params[:end_date].present? || params[:state].present?
     .alert.alert-success.mt-3
       Filtro de ordenes aplicado
