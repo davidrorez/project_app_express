@@ -54,6 +54,7 @@ es:
         state: Estado
         types_state:
           available: Disponible
+          unavailable: No disponible
           not_available: No disponible
       user:
         email: Correo electrónico
@@ -86,15 +87,19 @@ es:
       dish:
         one: Plato
         other: Platos
+        min: platos
       client:
         one: Cliente
         other: Clientes
+        min: clientes
       order:
         one: Orden
         other: Ordenes
+        min: ordenes
       user:
         one: Usuario
         other: Usuarios
+        min: usuarios
       views:
         editing_user: Editando usuario
         new_user: Nuevo usuario
@@ -124,6 +129,30 @@ es:
               not_a_number: no es un numero
             state:
               blank: en blanco
+        client:
+          attributes:
+            email:
+              blank: en blanco
+              invalid: invalido
+            password: 
+              blank: en blanco
+              too_short: muy corta
+            password_confirmation:
+              confirmation: es diferente a la contraseña
+            physical_address:
+              blank: en blanco
+            first_name: 
+              blank: en blanco
+            last_name:
+              blank: en blanco
+            state: 
+              enable: Habilitado
+              disable: Deshabilitado
+
+
+
+                  
+
         
 
 

@@ -1,40 +1,41 @@
-=form_for @dish, validates: true do |f|
-  -if @dish.errors.any?
-    .card.mx-4
-      %div{style: 'color: red'}
-        %h2
-          = t('application.can_not_be_saved')
-        %ul
-          -  @dish.errors.each do |error|
-            %li= error.full_message
+.container.text-center.my-5
+  = form_for @dish, validate: true do |f|
+    - if @dish.errors.any?
+      .card.mx-auto.w-50
+        %div{style: 'color: red'}
+          %h2= t('application.can_not_be_saved')
+          %ul
+            - @dish.errors.each do |error|
+              %li= error.full_message
 
-  .form-group.mx-4 
-    = f.label :name, class: "form-label required"
-    .div.w-25 
-      = f.text_field :name, autofocus: true, class: "form-control"
+    .form-group.mx-auto.w-50
+      = f.label :name, class: "form-label required"
+      .div.w-100
+        = f.text_field :name, autofocus: true, class: "form-control"
 
-  .form-group.mx-4 
-    = f.label :description, class: "form-label required"
-    .div.w-25 
-      = f.text_area :description, autofocus: true, class: "form-control"
+    .form-group.mx-auto.w-50
+      = f.label :description, class: "form-label required"
+      .div.form-field-container
+        .div.w-100{ style: "background-color: white;" }
+          = f.rich_text_area :description, class: "trix-editor", input_html: { input: "form.rich_text_area :content" }
 
-  .form-group.mx-4 
-    = f.label :price, class: "form-label required"
-    .div.w-25 
-      = f.text_field :price, autofocus: true, class: "form-control"
+    .form-group.mx-auto.w-50
+      = f.label :price, class: "form-label required"
+      .div.w-100
+        = f.text_field :price, autofocus: true, class: "form-control"
 
-  .form-group.mx-4 
-    = f.label :photo, class: "form-label required"
-    .div.w-25 
-      = f.file_field :photo, autofocus: true, class: "form-control"
+    .form-group.mx-auto.w-50
+      = f.label :photo, class: "form-label required"
+      .div.w-100
+        = f.file_field :photo, autofocus: true, class: "form-control"
 
-  .form-group.mx-4 
-    = f.label :state, class: "form-label required"
-    .div.w-25 
-      = f.select(:state, options_for_select(stateDish, @dish.state), {prompt: t('application.select')}, class: "form-control")
-      
-    .row.mt-4.mx-5
-      .d-grid.gap-2.d-md-block.text-start
-        = link_to t('application.back'), dishes_path, class: "btn btn-secondary btn-block" 
-        = button_tag t('application.save'), class: "btn btn-outline-primary btn-block"
+    .form-group.mx-auto.w-50
+      = f.label :state, class: "form-label required"
+      .div.w-100
+        = f.select(:state, options_for_select(stateDish, @dish.state), {prompt: t('application.select')}, class: "form-control")
+
+      .row.mt-4
+        .col.text-center
+          = link_to t('application.back'), dishes_path, class: "btn btn-secondary btn-block" 
+          = button_tag t('application.save'), class: "btn btn-outline-primary btn-block"
 

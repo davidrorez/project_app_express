@@ -1,6 +1,6 @@
 %div.d-flex.align-items-center.justify-content-between
   %h1
-    = t('activerecord.modules.client.other')
+    = t('application.list_of', model: t('activerecord.modules.client.min'))
   %div.float-end.pb-4.mt-4
     = link_to ('Crear pruebas'), new_client_path, class: "btn btn-primary"
 
