@@ -39,7 +39,6 @@ module Api
       render 'api/order_dishes/show', status: :ok
     end
 
-    #esto hay que agregarlo a develop. Solo está en mi maquina
     def change_state
       if @order_dish.order.state == "delivered" || @order_dish.order.state == "cancelled"
         return

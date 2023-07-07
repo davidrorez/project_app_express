@@ -10,6 +10,7 @@ gem "bootsnap", require: false
 gem "devise"
 gem 'font-awesome-sass', '~> 6.4.0'
 gem 'haml'
+gem 'redis'
 gem 'active_storage_validations'
 gem 'httparty'
 gem "importmap-rails"

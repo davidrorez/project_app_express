@@ -8,6 +8,7 @@ module Api
     def index
       @orders = Order.all
       apply_filters(params[:client_id], params[:start_date], params[:end_date], params[:state])
+      
     end
     
     def show; end
@@ -22,6 +23,7 @@ module Api
       @order = Order.new(order_params)
         if @order.save
           render 'api/orders/show', status: :created
+          OrdersChannel.broadcast_to("orders_channel", @order)
         else
           render json: @order.errors, status: :unprocessable_entity
         end
@@ -29,11 +31,13 @@ module Api
     
     def update
       if @order.update(order_params)
-        render 'api/orders/show', status: :ok
+        render json: @order, status: :ok
+        OrdersChannel.broadcast_to("orders_channel", @order)
       else
         render json: @order.errors, status: :unprocessable_entity
       end
     end
+    
     
     def destroy
       @order.destroy
