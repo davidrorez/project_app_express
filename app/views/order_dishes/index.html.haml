@@ -1,0 +1,23 @@
+%h1 Listing order_dishes
+
+%table
+  %thead
+    %tr
+      %th Order
+      %th Dish
+      %th
+      %th
+      %th
+
+  %tbody
+    - @order_dishes.each do |order_dish|
+      %tr
+        %td= order_dish.order
+        %td= order_dish.dish
+        %td= link_to 'Show', order_dish
+        %td= link_to 'Edit', edit_order_dish_path(order_dish)
+        %td= link_to 'Destroy', order_dish, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Order dish', new_order_dish_path

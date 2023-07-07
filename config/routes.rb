@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :orders
-  resources :clients
+
+  mount ActionCable.server => '/cable'
+
   devise_for :users, path_names: {
     sign_in: 'login',
     sign_out: 'logout',
@@ -17,9 +18,23 @@ Rails.application.routes.draw do
     confirmations: 'users/confirmations'
   }
 
+  namespace :api, defaults: { format: 'json' } do
+    resources :users
+    resources :clients
+    resources :orders
+    resources :dishes
+    resources :order_dishes
+    devise_scope :user do
+      post 'sessions/kitchen', to: 'sessions#create_kitchen'
+    end
+  end
+  
+  resources :orders
+  resources :clients
   resources :tests
   resources :dishes
   resources :users
+  resources :order_dishes
 
   root "dashboards#index"
 end

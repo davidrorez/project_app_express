@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Order:
+  = @order_dish.order
+%p
+  %b Dish:
+  = @order_dish.dish
+
+= link_to 'Edit', edit_order_dish_path(@order_dish)
+\|
+= link_to 'Back', order_dishes_path

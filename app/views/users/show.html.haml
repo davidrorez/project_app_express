@@ -1,0 +1,16 @@
+%h1.text-center.mt-2
+  = t('activerecord.modules.user.one')
+.row.justify-content-center
+  .col-md-8.mx-auto
+    .card.m-4
+      .card-body
+        %h5.card-title
+          = t('activerecord.attributes.user.email')
+        %p.card-text= @user.email
+        %h5.card-title
+          = t('activerecord.attributes.user.role')
+        %p.card-text=@user.admin? ? t('activerecord.attributes.user.types_role.admin') : t('activerecord.attributes.user.types_role.kitchen')
+
+.row.mt-4.text-center
+  .col-md-12
+    = link_to t('application.back'), users_path, class: "btn btn-secondary btn-block"

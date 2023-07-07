@@ -1,32 +1,31 @@
-%h2.text-center.mt-2
-  = t('application.log_in')
+.card.mx-auto(style="max-width: 400px; border-radius: 10px;")
+  .card-body
+    %h2.text-center.mt-2
+      = t('application.log_in')
 
-= form_for(@user, as: :user, url: session_path(:user)) do |f|
-  .form-group.text-center
-    = f.label :email, class: "form-label required"
-    .div.w-100.text-center.mx-auto(style="max-width: 400px; margin: 0 auto;")
-      = f.email_field :email, autofocus: true, class: "form-control", style: "width: 100%;", required: true
+    = form_for(@user, as: :user, url: session_path(:user)) do |f|
+      .form-group.text-center
+        = f.label :email, class: "form-label required"
+        = f.email_field :email, autofocus: true, class: "form-control", style: "width: 100%;", required: true, placeholder: t('activerecord.attributes.user.email')
 
-  .form-group.mt-2.text-center
-    = f.label :password, class: "form-label required"
-    .div.w-100.text-center.mx-auto(style="max-width: 400px; margin: 0 auto;")
-      = f.password_field :password, autofocus: true, class: "form-control", style: "width: 100%;", required: true
+      .form-group.mt-2.text-center
+        = f.label :password, class: "form-label required"
+        = f.password_field :password, autofocus: true, class: "form-control", style: "width: 100%;", required: true, placeholder: t('activerecord.attributes.user.password')
 
-  - if devise_mapping.rememberable?
-    .form-group.text-center
-      .form-check.d-flex.align-items-center
-      .div.w-100.text-center.mx-auto(style="max-width: 400px; margin: 0 auto; margin-top: -1rem;")
-        = f.check_box :remember_me
-        = f.label :remember_me
+      - if devise_mapping.rememberable?
+        .form-group.text-center
+          .form-check.d-flex.align-items-center
+            .div.w-100.text-center.mx-auto(style="max-width: 400px; margin: 0 auto; margin-top: 1rem;")
+              = f.check_box :remember_me
+              = f.label :remember_me, t('devise.shared.remember_me')
 
-  .row.mt-4
-    .col.text-center
-      .div.w-100.text-center.mx-auto(style="max-width: 400px; margin: 0 auto;")
-        = f.submit t('application.log_in'), class: "btn btn-primary btn-block", style: "width: 100%;"
-        .pt-1.mb-2
-          %p.mb-2.pb-lg-2{style: "color: #393f81;"}
-          = render "users/shared/links" 
+      .row.mt-4
+        .col.text-center
+          = f.submit t('application.log_in'), class: "btn btn-primary btn-block", style: "width: 100%;"
+          .pt-1.mb-2
+            %p.mb-2.pb-lg-2{style: "color: #393f81;"}
+            = render "users/shared/links" 
 
-        - if flash[:alert].present?
-          .alert.alert-danger.text-center
-            %p= flash[:alert]
+          - if flash[:alert].present?
+            .alert.alert-danger.text-center
+              %p= flash[:alert]

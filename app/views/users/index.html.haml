@@ -1,0 +1,26 @@
+%div.d-flex.align-items-center.justify-content-between
+  %h1 
+    = t('application.list_of', model: t('activerecord.modules.user.min'))
+  %div.float-end.pb-4-mt-1
+    = link_to t('application.create'), new_user_path, class: "btn btn-primary"
+
+%table.table.bg-white.rounded.shadow-sm.table-hover
+  %thread
+    %tr
+      %th= t('activerecord.attributes.user.email')
+      %th= t('activerecord.attributes.user.role')
+      %th
+
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.email
+        %td= t("activerecord.attributes.user.types_role.#{user.role}")
+        %td.d-flex.justify-content-end
+          .btn-group.dropdown
+            %button.btn.btn-success.dropdown-toggle{"type" => "button", "data-bs-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false"}
+              = t('application.actions')
+            .dropdown-menu.dropdown-menu-end
+              = link_to t('application.show'), user, class: "dropdown-item"
+              = link_to t('application.edit'), edit_user_path(user), class: "dropdown-item"
+              = button_to t('application.delete'), user_path(user), method: :delete, class: "dropdown-item", data: { confirm: t('application.confirm_delete') }

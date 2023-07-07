@@ -1,0 +1,25 @@
+%h1.text-center.mt-2
+  = t('activerecord.modules.client.one')
+.row.justify-content-center
+  .col-md-8.mx-auto
+    .card.m-4
+      .card-body
+        %h5.card-title
+          = t('activerecord.attributes.client.first_name')
+        %p.card-text= @client.first_name
+        %h5.card-title
+          = t('activerecord.attributes.client.last_name')
+        %p.card-text=@client.last_name
+        %h5.card-title
+          = t('activerecord.attributes.client.email')
+        %p.card-text=@client.email
+        %h5.card-title
+          = t('activerecord.attributes.client.physical_address')
+        %p.card-text=@client.physical_address
+        %h5.card-title
+          = t('application.state')
+        %p.card-text=@client.enable? ? t('activerecord.attributes.client.types_state.enable') : t('activerecord.attributes.client.types_state.disable')
+
+.row.mt-4.text-center
+  .col-md-12
+    = link_to t('application.back'), clients_path, class: "btn btn-secondary btn-block"

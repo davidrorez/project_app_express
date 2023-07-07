@@ -1,0 +1,38 @@
+%h1.text-center.mt-2
+  = t('activerecord.modules.order.one')
+.row.justify-content-center
+  .col-md-8.mx-auto
+    .card.m-4
+      .card-body
+        %h5.card-title
+          = t('application.full_name')
+        %p.card-text= @order.client.first_name + " " + @order.client.last_name
+        %h5.card-title
+          = t('activerecord.attributes.order.created_at')
+        %p.card-text= @order.created_at.strftime("%d-%m-%Y %H:%M:%S")
+        %h5.card-title
+          = t('activerecord.modules.dish.other')
+        - if @order.dishes.present?
+          %p.card-text= @order.dishes.map(&:name).join(", ")
+        %h5.card-title
+          = t('activerecord.attributes.order.state')
+        - if @order.delivered?
+          %p.card-text
+            = t('activerecord.attributes.order.types_state.delivered')
+        - elsif @order.on_Time?
+          %p.card-text
+            = t('activerecord.attributes.order.types_state.on_Time')
+        - elsif @order.delayed?
+          %p.card-text
+            = t('activerecord.attributes.order.types_state.delayed')
+        - elsif @order.late?
+          %p.card-text
+            = t('activerecord.attributes.order.types_state.late')
+        - elsif @order.cancelled?
+          %p.card-text
+            = t('activerecord.attributes.order.types_state.cancelled')
+
+
+.row.mt-4.text-center
+  .col-md-12
+    = link_to t('application.back'), users_path, class: "btn btn-secondary btn-block"
