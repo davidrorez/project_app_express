@@ -1,6 +1,6 @@
 %div.d-flex.align-items-center.justify-content-between
   %h1
-    = t('activerecord.modules.views.list_of_dishes')
+    = t('application.list_of', model: t('activerecord.modules.dish.min'))
   %div.float-end.pb-4.mt-4
     = link_to t('application.create'), new_dish_path, class: "btn btn-primary"
 
